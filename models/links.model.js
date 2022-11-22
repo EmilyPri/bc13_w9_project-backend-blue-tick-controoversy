@@ -2,7 +2,7 @@ import { pool } from "../db/index.js";
 
 export async function getLinksByWeek(week) {
   const sqlQuery =
-    "SELECT * FROM links WHERE week = ($1);";
+    "SELECT * FROM links INNER JOIN subjects ON links.subject = subjects.subject_id WHERE week = ($1);";
     const parameterValues = [week]
   const result = await pool.query(sqlQuery, parameterValues);
   const links = result.rows;
