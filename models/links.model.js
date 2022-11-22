@@ -1,9 +1,10 @@
 import { pool } from "../db/index.js";
 
-export async function MODEL1() {
+export async function getLinksByWeek(week) {
   const sqlQuery =
-    "SELECT XXX;";
-  const result = await pool.query(sqlQuery);
+    "SELECT * FROM links WHERE week = ($1);";
+    const parameterValues = [week]
+  const result = await pool.query(sqlQuery, parameterValues);
   const links = result.rows;
   return links;
 }

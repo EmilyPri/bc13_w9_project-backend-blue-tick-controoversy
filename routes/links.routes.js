@@ -3,17 +3,16 @@ import * as linksModel from "../models/links.model.js";
 
 export const linksRouter = express.Router();
 
-
-/*
-todosRouter.get("/", async function (req, res) {
-  const links = await linksModel.getAllTodos();
+linksRouter.get("/:week", async function (req, res) {
+  const links = await linksModel.getLinksByWeek(req.params.week);
 
   res.status(200).json({
     success: true,
-    payload: todos,
+    payload: links,
   });
 });
 
+/*
 todosRouter.post("/", async function (req, res) {
   const somethingIsMissing =
     req.body.task === undefined || req.body.completionDate === undefined;
