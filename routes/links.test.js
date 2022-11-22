@@ -29,3 +29,35 @@ test("get by week route response", async function(){
              })
     }
 })
+
+test("Error if POSTING something and anything is missing", async function () {
+    const response = await supertest(app).post("/api/links").send({title: "jest"});
+    expect(response.status).toEqual(400);
+
+    expect(response.body).toStrictEqual({
+        success: false,
+        error: "Please provide all fields for link to be added"
+    })
+});
+
+test("Success if posting with nothing missing", async function () {
+    const response = await supertest(app).post("/api/links").send({
+        "link": "https://itsme.com",
+        "title": "hello",
+        "description": "hi",
+        "week": 2,
+        "subject": 6});
+    expect(response.status).toEqual(201);
+
+    expect(response.body).toStrictEqual({
+        success: true,
+        payload: {
+            link_id: expect.any(Number),
+            link: expect.any(String),
+            title: expect.any(String),
+            description: expect.any(String),
+            week: 2,
+            subject: 6
+        }
+    })
+});

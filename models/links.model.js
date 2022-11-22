@@ -11,8 +11,8 @@ export async function getLinksByWeek(week) {
 
 export async function createLink(newLink) {
   const sqlQuery =
-    "INSERT INTO links (column1, column2) VALUES ($1, $2) RETURNING *;";
-  const parameterValues = [newLink.valueXX, newLink.valueXX];
+    "INSERT INTO links (link, title, description, week, subject) VALUES ($1, $2, $3, $4, $5) RETURNING *;";
+  const parameterValues = [newLink.link, newLink.title, newLink.description, newLink.week, newLink.subject];
   const result = await pool.query(sqlQuery, parameterValues);
   const created = result.rows[0];
   return created;
