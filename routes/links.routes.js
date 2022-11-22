@@ -12,7 +12,39 @@ linksRouter.get("/:week", async function (req, res) {
   });
 });
 
+
+linksRouter.get("/", async function (req, res) {
+  const links = await linksModel.getLinksBySubject(req.query.subject);
+
+  res.status(200).json({
+    success: true,
+    payload: links,
+  });
+});
+
 linksRouter.post("/", async function (req, res) {
+  const somethingIsMissing =
+  req.body.link === undefined || req.body.title === undefined || req.body.description === undefined || req.body.week === undefined || req.body.subject === undefined;
+
+  if (somethingIsMissing) {
+    res.status(400).json({
+      success: false,
+      error: "Please provide all fields for link to be added",
+    });
+    return;
+  }
+
+  const created = await linksModel.createLink(req.body);
+
+  res.status(201).json({
+    success: true,
+    payload: created,
+  });
+});
+
+
+/*
+todosRouter.post("/", async function (req, res) {
   const somethingIsMissing =
   req.body.link === undefined || req.body.title === undefined || req.body.description === undefined || req.body.week === undefined || req.body.subject === undefined;
 
