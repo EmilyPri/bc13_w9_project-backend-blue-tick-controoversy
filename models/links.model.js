@@ -9,6 +9,15 @@ export async function getLinksByWeek(week) {
   return links;
 }
 
+export async function getLinksBySubject(subject) {
+  const sqlQuery =
+    "SELECT * FROM links INNER JOIN subjects ON links.subject = subjects.subject_id WHERE subjects.subject = ($1);";
+    const parameterValues = [subject]
+  const result = await pool.query(sqlQuery, parameterValues);
+  const links = result.rows;
+  return links;
+}
+
 export async function createLink(newLink) {
   const sqlQuery =
     "INSERT INTO links (column1, column2) VALUES ($1, $2) RETURNING *;";

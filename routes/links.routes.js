@@ -12,6 +12,17 @@ linksRouter.get("/:week", async function (req, res) {
   });
 });
 
+
+linksRouter.get("/", async function (req, res) {
+  const links = await linksModel.getLinksBySubject(req.query.subject);
+
+  res.status(200).json({
+    success: true,
+    payload: links,
+  });
+});
+
+
 /*
 todosRouter.post("/", async function (req, res) {
   const somethingIsMissing =
