@@ -7,7 +7,11 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon -r dotenv/config server.js",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --setupFiles dotenv/config --watchAll"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --setupFiles dotenv/config --watchAll",
+    "db-create": "node -r dotenv/config ./db/scripts/create-all-tables.js",
+    "db-drop": "node -r dotenv/config ./db/scripts/drop-all-tables.js",
+    "db-reset": "node -r dotenv/config ./db/scripts/reset-all-tables.js"
+
   },
   "keywords": [],
   "author": "",
