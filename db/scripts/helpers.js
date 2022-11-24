@@ -3,7 +3,24 @@ import { pool } from "../index.js";
 export async function createAllTables() {
     return await pool.query(
 
-    `CREATE TABLE IF NOT EXISTS links (
+    `CREATE TABLE IF NOT EXISTS subjects (
+      subject_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+      subject TEXT,
+      icon TEXT
+   );
+   INSERT INTO subjects
+      (subject, icon)
+   VALUES
+   ('API', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg')
+   ('CSS', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg')
+   ('JavaScript', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg')
+   ('React', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg')
+   ('HTML', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg')
+   ('General Dev', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Code.svg/1200px-Code.svg.png')
+   ('SQL', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg')
+   ('Git', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg');
+   
+   CREATE TABLE IF NOT EXISTS links (
             link_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
             link TEXT,
             title TEXT,
@@ -37,13 +54,13 @@ export async function createAllTables() {
          ('https://yoksel.github.io/grid-cheatsheet/',	'How to use grid',	'Want to be a grid pro? Find out when, how and why to use grid here.',	3,	2)
          ('https://yoksel.github.io/flex-cheatsheet/',	'How to use FlexBox',	'Flexbox is famously tricky. Master it in 15 minutes here.',	3,	2)
          ('https://developer.chrome.com/docs/devtools/javascript/',	'Using the debugger',	'Learn how to use Chrome DevTools to find and fix JavaScript bugs!',	4,	6)
-         ('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals',	'Interpolating JavaScript Strings',	'Just what is the ${} anyway? We explain when to use it, and most importantly, how!',	2,	3)			
+         ('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals',	'Interpolating JavaScript Strings',	'Just what is the dollar squig anyway? We explain when to use it, and most importantly, how!',	2,	3)			
          ('https://nordvpn.com/blog/what-is-my-port/',	'Understanding Ports',	'Wheres my port again? Super useful 2 minute guide for those times when your backend is becoming a pain in your backend.',	5,	6)
          ('https://stackoverflow.com/questions/28558920/postgresql-foreign-key-syntax',	'Foreign Keys in SQL ',	'Linking SQL tables can be hard to get your head around. Whats the best way to get it done?',	5,	6)
          ('https://github.com/public-apis/public-apis',	'Public APIs Library',	'A fab resource of free APIs for all your projects!',	3,	6)
          ('https://debbie.codes/blog/testing-button-component/',	'React Testing Library',	'Walk through testing a button in the React Testing Library',	7,	4)
          ('https://codingfantasy.com/games/flexboxadventure',	'FlexBox Adventure Fun!',	'Another flexbox game? Get practicing on this adventure!',	3,	2)
-         ('https://kentcdodds.com/blog/common-mistakes-with-react-testing-library',	'Common React Testing Mistakes',	'How to avoid the most common (and most annoying) pitfalls with the React testing library.',	7,	4)
+         ('https://kentcdodds.com/blog/common-mistakes-with-react-testing-library',	'Common React Testing Mistakes',	'How to avoid the most common and most annoying pitfalls with the React testing library.',	7,	4)
          ('https://www.benmvp.com/blog/react-testing-library-best-practices/',	'React Testing Best Practice',	'Tips and tricks on how to test your frontend like a true professional!',	7,	4)
          ('https://www.tpgi.com/what-is-an-accessible-name/',	'Accessible HTML Names',	'Many HTML elements have an accessible name which means someone using a screen reader will hear the accessible name announced as they move to that element! Find out more here.', 	6,	4)
          ('https://www.youtube.com/watch?v=4pO-HcG2igk',	'useState Hook',	'What is a state and how do you use it? Seven minutes to master useState.',	7,	4)
@@ -61,24 +78,7 @@ export async function createAllTables() {
          ('https://youtu.be/ananPWEdfDA',	'ES6 imports and exports',	'Just switched from CJS? Fear not, this handy guide will have you importing and exporting in ES6 in no time!',	6,	6)
          ('https://blog.logrocket.com/crud-rest-api-node-js-express-postgresql/#creating-routes-crud-operations',	'CRUD: Creating Routes',	'Linking up to an actual database? Read this handy guide to incorporating your pg SQL language into your Express CRUD routes.',	6,	7)
          ('https://stackoverflow.com/questions/71538752/when-are-quotes-needed-in-env-file',	'The .env file',	'Wait, no quotes?! Read all about the .env file and how to write effective environment variable code.', 	6,	6)
-         ('https://www.codecademy.com/article/introduction-to-javascript-runtime-environments',	'JavaScript Runtime Environments',	'But just what is Node.js? Understand the fundamentals of Javascript runtime environments, why they are used, and what it will mean for your code. ',	2,	6);
-          
-          CREATE TABLE subjects (
-             subject_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-             subject TEXT,
-             icon TEXT
-          );
-          INSERT INTO subjects
-             (subject, icon)
-          VALUES
-          ('API', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg')
-          ('CSS', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg')
-          ('JavaScript', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg')
-          ('React', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg')
-          ('HTML', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg')
-          ('General Dev', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Code.svg/1200px-Code.svg.png')
-          ('SQL', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg')
-          ('Git', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg');`
+         ('https://www.codecademy.com/article/introduction-to-javascript-runtime-environments',	'JavaScript Runtime Environments',	'But just what is Node.js? Understand the fundamentals of Javascript runtime environments, why they are used, and what it will mean for your code.',	2,	6);`
     )
 };
 

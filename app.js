@@ -9,3 +9,5 @@ app.use(express.json());
 app.use("/api/links", linksRouter);
 
 export default app;
+
+/*postgres://pegqqefi:zNdQZZffF2zGXTXp5-dlP9jNFL5Xuxl8@lucky.db.elephantsql.com/pegqqefi*/
