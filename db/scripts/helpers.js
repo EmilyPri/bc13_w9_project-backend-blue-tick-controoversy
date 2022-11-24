@@ -49,7 +49,7 @@ export async function createAllTables() {
          ('https://www.w3schools.com/jsref/met_win_settimeout.asp',	'How to use setTimeout',	'Why do I need async? And how do I get my timer ticking? Find a full breakdown here.',	2,	3)
          ('https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous',	'Asyncronous Functions',	'When and why to use async and await, and just what is a promise? Master this fundamental concept in 10 minutes.',	2,	3)		
          ('https://rowanmanning.com/posts/javascript-for-beginners-async/',	'Asyncronous Functions',	'A beginners guide to using and understanding asyncronous functions.',	2,	3)							
-         ('https://www.boia.org/blog/googles-lighthouse-accessibility-tests-are-helpful-but-not-perfect',	'Lighthouse Accessibility Tests',	'Lighthouse tests are great, but theyre not perfect. What should we bear in mind when using them?' 3,	6)
+         ('https://www.boia.org/blog/googles-lighthouse-accessibility-tests-are-helpful-but-not-perfect',	'Lighthouse Accessibility Tests',	'Lighthouse tests are great, but theyre not perfect. What should we bear in mind when using them?', 3,	6)
          ('https://flexboxfroggy.com/',	'FlexBox Froggy Fun!',	'Get to grips with FlexBox with this fun interactive game!',	3,	2)
          ('https://yoksel.github.io/grid-cheatsheet/',	'How to use grid',	'Want to be a grid pro? Find out when, how and why to use grid here.',	3,	2)
          ('https://yoksel.github.io/flex-cheatsheet/',	'How to use FlexBox',	'Flexbox is famously tricky. Master it in 15 minutes here.',	3,	2)
