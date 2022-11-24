@@ -28,7 +28,7 @@ export async function createLink(newLink) {
 }
 
 export async function countLikes(id, linksCard) {
-  const sqlQuery = "UPDATE links SET (likes) = ($1) WHERE link_id = $2 RETURNING * ;";
+  const sqlQuery = "UPDATE links SET likes = ($1) WHERE link_id = $2 RETURNING * ;";
   const parameterValues = [linksCard.likes, id];
   const result = await pool.query(sqlQuery, parameterValues);
   const updated = result.rows[0]
