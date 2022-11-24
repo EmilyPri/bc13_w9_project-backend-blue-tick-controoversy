@@ -26,7 +26,8 @@ export async function createAllTables() {
             title TEXT,
             description TEXT,
             week INT,
-            subject INT REFERENCES subjects(subject_id)
+            subject INT REFERENCES subjects(subject_id),
+            likes INT DEFAULT 0
           );
           INSERT INTO links
              (link, title, description, week, subject)
