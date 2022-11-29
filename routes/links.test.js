@@ -25,7 +25,8 @@ test("get by week route response", async function(){
                 week: 1,
                 subject: expect.any(String),
                 subject_id: expect.any(Number),
-                icon: expect.any(String)
+                icon: expect.any(String),
+                likes: expect.any(Number)
              })
     }
 });
@@ -48,7 +49,8 @@ test("get by subject route response", async function(){
                 week: expect.any(Number),
                 subject: "React",
                 subject_id: 4,
-                icon: expect.any(String)
+                icon: expect.any(String),
+                likes: expect.any(Number)
              })
     }
 })
@@ -82,7 +84,51 @@ test("Success if posting with nothing missing", async function () {
             title: expect.any(String),
             description: expect.any(String),
             week: 2,
-            subject: 6
+            subject: 6,
+            likes: 0
         }
+    })
+});
+
+test("Success if posting with nothing missing", async function () {
+    const response = await supertest(app).post("/api/links").send({
+        "link": "https://itsme.com",
+        "title": "hello",
+        "description": "hi",
+        "week": 2,
+        "subject": 6});
+    expect(response.status).toEqual(201);
+
+    expect(response.body).toStrictEqual({
+        success: true,
+        payload: {
+            link_id: expect.any(Number),
+            link: expect.any(String),
+            title: expect.any(String),
+            description: expect.any(String),
+            week: 2,
+            subject: 6,
+            likes: 0
+        }
+    })
+});
+
+test("Success updating number of likes", async function (){
+    const response = await (supertest(app).patch("/api/links/1")).send({
+        "likes": 2})  ;
+
+    expect(response.status).toEqual(200);
+
+    expect(response.body).toStrictEqual({
+        success: true,
+        payload: {
+            link_id: 1,
+            link: expect.any(String),
+            title: expect.any(String),
+            description: expect.any(String),
+            week: expect.any(Number),
+            subject: expect.any(Number),
+            likes: 2
+        }  
     })
 });
