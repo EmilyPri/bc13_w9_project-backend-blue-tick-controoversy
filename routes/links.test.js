@@ -33,7 +33,7 @@ test("get by week route response", async function(){
 
 test("get by subject route response", async function(){
 
-    const response = await supertest(app).get(`/api/links?subject=React`)
+    const response = await supertest(app).get(`/api/links?subject=4`)
     expect(response.status).toBe(200);
     expect(response.body).toStrictEqual({
         success: true,
